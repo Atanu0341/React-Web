@@ -5,6 +5,10 @@ import googleIcon from "../../assets/googleIcon.svg";
 
 const Signin = () => {
   const navigate = useNavigate();
+  const handleSignIn = () => {
+    
+    navigate("/dashboard");
+  };
 
   return (
     <div className="w-screen h-screen flex">
@@ -58,7 +62,7 @@ const Signin = () => {
             </a>
 
             <a href="/dashboard">
-              <button className="bg-black text-white text-center rounded-md w-full lg:p-2 lg:text-lg font-bold hover:bg-[#1d1c1c]">
+              <button onClick={handleSignIn} className="bg-black text-white text-center rounded-md w-full lg:p-2 lg:text-lg font-bold hover:bg-[#1d1c1c]">
                 Sign In
               </button>
             </a>
