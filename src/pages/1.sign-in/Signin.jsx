@@ -1,51 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import jwt_decode from "jwt-decode";
 import appleIcon from "../../assets/appleIcon.svg";
+import googleIcon from "../../assets/googleIcon.svg";
 
 const Signin = () => {
-  const navigate = useNavigate(); // Get the navigate function from React Router
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    // Load the Google Identity Services library
-    const script = document.createElement("script");
-    script.src = "https://accounts.google.com/gsi/client";
-    script.async = true;
-    script.defer = true;
-    script.onload = initializeGoogleSignIn;
-    document.body.appendChild(script);
-
-    return () => {
-      // Clean up the script element
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  function initializeGoogleSignIn() {
-    google.accounts.id.initialize({
-      client_id:
-        "673900277729-erfe3bg0n986s4bv19k0u2krtpk4rk7d.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("googleSignInButton"),
-      {
-        size: "small",
-      }
-    );
-  }
-
-  function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
-    let userObject = jwt_decode(response.credential);
-    console.log(userObject);
-    setUser(userObject);
-
-    // After successful authentication, navigate to the dashboard
-    navigate("/dashboard", { state: { user: userObject } });
-  }
+  const navigate = useNavigate();
 
   return (
     <div className="w-screen h-screen flex">
@@ -61,12 +20,17 @@ const Signin = () => {
           <div className="mt-[6px]">Sign in to your account</div>
 
           <div className="flex flex-col gap-3 mt-[12px] lg:flex-row lg:justify-between lg:mt-5">
-            <div
-              className="bg-white text-[#858585] text-sm rounded-md flex items-center justify-center w-full lg:mr-3 lg:p-1"
-              id="googleSignInButton"
-            ></div>
+            {/* Google Sign-In button */}
+            <button className="bg-[white] hover:bg-[#f2d7a9] text-[#858585] text-sm rounded-md flex items-center justify-center w-full lg:mr-3 lg:p-1">
+              <img
+                src={googleIcon}
+                alt="Apple Icon"
+                className="w-3 h-5 mr-2 ml-[10px]"
+              />
+              <span className="lg:text-[12px]">Sign in with Google</span>
+            </button>
 
-            <button className="bg-white text-[#858585] text-sm rounded-md flex items-center justify-center w-full lg:p-1">
+            <button className="bg-white hover:bg-[#f2d7a9] text-[#858585] text-sm rounded-md flex items-center justify-center w-full lg:p-1">
               <img
                 src={appleIcon}
                 alt="Apple Icon"
@@ -89,18 +53,20 @@ const Signin = () => {
               className="bg-[#F5F5F5] rounded-md w-full lg:p-2"
             />
 
-            <a href="" className="text-[#346BD4] text-sm">
+            <a href="" className="text-[#346BD4] text-sm hover:text-[#4851ba]">
               Forgot Password?
             </a>
 
-            <button className="bg-black text-white text-center rounded-md w-full lg:p-2 lg:text-lg font-bold">
-              Sign In
-            </button>
+            <a href="/dashboard">
+              <button className="bg-black text-white text-center rounded-md w-full lg:p-2 lg:text-lg font-bold hover:bg-[#1d1c1c]">
+                Sign In
+              </button>
+            </a>
           </div>
 
           <p className="mt-[10px] text-[#858585]">
             Don’t have an account?{" "}
-            <a href="" className="text-[#346BD4]">
+            <a href="" className="text-[#346BD4] hover:text-[#4851ba]">
               Register here
             </a>
           </p>

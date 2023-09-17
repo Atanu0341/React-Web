@@ -12,6 +12,7 @@ import TotalRevenues from "../../assets/TotalRevenues.svg";
 import TotalUsers from "../../assets/TotalUsers.svg";
 import like from "../../assets/like.svg";
 import down from "../../assets/down.svg";
+import profile from "../../assets/profile.svg";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -118,15 +119,13 @@ const Dashboard = () => {
   }, [data]);
 
   return (
-    <div className="bg-[#F5F5F5] w-screen h-screen flex">
+    <div className="bg-[#F5F5F5]  h-screen flex">
       {/* left */}
       <div className="bg-black w-[38%] md:[26%] flex flex-col items-center m-3 rounded-3xl p-2 lg:w-1/4">
         <h1 className="text-white text-4xl font-bold lg:text-4xl mt-4">
           Target.
         </h1>
-        <span className="text-white  text-sm font-bold mt-6">
-          Welcome,<span>{user.name}</span>
-        </span>
+        
         <div className="flex flex-col mt-6 cursor-pointer">
           <ul className="space-y-4">
             <li className="text-white flex items-center">
@@ -182,7 +181,7 @@ const Dashboard = () => {
             </div>
             <img src={Notification} alt="Notification Icon" className="w-4" />
             <img
-              src={user.picture}
+              src={profile}
               alt="Profile Picture"
               className="w-7 rounded-xl"
             />
@@ -191,7 +190,7 @@ const Dashboard = () => {
 
         {data && (
           <div className="flex flex-col space-y-1 mt-[5px]">
-            <div className="flex flex-col gap-2 md:flex-row lg:justify-between">
+            <div className="flex flex-col gap-2 md:flex-row lg:justify-between ">
               <h2 className="text-sm bg-[#DDEFE0] p-1 rounded-md flex items-center justify-between md:p-5 md:text-xs">
                 <span>
                   Total Revenues:{" "}
@@ -202,7 +201,7 @@ const Dashboard = () => {
                 <img
                   src={TotalRevenues}
                   alt="Total Revenues Icon"
-                  className="ml-2 w-[14px]"
+                  className="ml-2 w-[14px] lg:mt-[-23px]"
                 />
               </h2>
               <h2 className="text-sm bg-[#F4ECDD] p-1 rounded-md flex items-center justify-between md:p-5 md:text-xs">
@@ -215,7 +214,7 @@ const Dashboard = () => {
                 <img
                   src={total_transactions_icon}
                   alt="Total Transactions Icon"
-                  className="ml-2 w-[14px] "
+                  className="ml-2 w-[14px] lg:mt-[-23px]"
                 />
               </h2>
               <h2 className="text-sm bg-[#EFDADA] p-1 rounded-md flex items-center justify-between md:p-5 md:text-xs">
@@ -225,19 +224,19 @@ const Dashboard = () => {
                     {data.data[2].value}
                   </span>
                 </span>
-                <img src={like} alt="Like Icon" className="ml-2 w-[14px]" />
+                <img src={like} alt="Like Icon" className="ml-2 w-[14px] lg:mt-[-23px]" />
               </h2>
               <h2 className="text-sm bg-[#DEE0EF] p-1 rounded-md flex items-center justify-between md:p-5 md:text-xs">
                 <span>
                   Total Users:{" "}
-                  <span className="font-semibold md:font-bold">
+                  <span className="font-semibold md:font-bold ">
                     {data.data[3].value}
                   </span>
                 </span>
                 <img
                   src={TotalUsers}
                   alt="Total Users Icon"
-                  className="ml-2 w-[14px]"
+                  className="ml-2 w-[14px] lg:mt-[-23px]"
                 />
               </h2>
             </div>
@@ -268,7 +267,7 @@ const Dashboard = () => {
                 <div
                   id="pieChartContainer"
                   className="h-[72px] w-[72px]
-                  md:w-[50vw] md:h-[182px] lg:w-[332px] lg:h-[283px] xl:w-[328px] xl:h-[400px]"
+                  md:w-[50vw] md:h-[182px] lg:w-[332px] lg:h-[283px] xl:w-[328px] xl:h-[205px]"
                 ></div>
               </div>
 
